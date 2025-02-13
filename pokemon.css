@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    font-family: 'Pokemon Hollow';
+    font-size: 1.5rem;
+}
+
+.list-wrapper {
+    display: flex;
+
+
+    
+}
+
+.number-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.name-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    max-width: 15rem;
+}
