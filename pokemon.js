@@ -1,6 +1,6 @@
-const MAX_POKEMON = 649;
+const MAX_POKEMON = 647;
 const listWrapper = document.querySelector('.list-wrapper');
-const searchInput = document.querySelector('#Search-input');
+const searchInput = document.querySelector('#search-input');
 const numberFilter = document.querySelector('#number');
 const nameFilter = document.querySelector('#name');
 const notFoundMessage = document.querySelector('#not-found-message');
@@ -11,7 +11,6 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMON}`)
     .then((response) => response.json())
     .then((data) => {
         allPokemon = data.results;
-        console.log(allPokemon)
         displayPokemons(allPokemon)
 
     });
@@ -46,7 +45,7 @@ function displayPokemons(pokemon) {
     <div class="img-wrap">
     <img src="https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/other/dream-world/${pokemonID}.svg"</div>
  <div class="name-wrap">
-    <p class="body3-fonts">${pokemon.name}</p>
+    <p class="body3-fonts">#${pokemon.name}</p>
     </div>`;
 
         listItem.addEventListener("click", async () => {
@@ -63,13 +62,33 @@ function displayPokemons(pokemon) {
 
 searchInput.addEventListener("keyup", handleSearch)
 
-function handleSearch()   {
- const searchTerm = searchInput.value.toLowerCase();
- let filteredPokemon; 
- 
- if(numberFilter.checked)  {
-    filteredPokemon = allPokemon.filter = `${pokemonID}`
- }
-}
+function handleSearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    let filteredPokemon;
 
+    if (numberFilter.checked) {
+        filteredPokemon = allPokemon.filter((pokemon) => {
+            const pokemonID = pokemon.url.split("/")[6];
+            console.log(pokemonID)
+            return pokemonID.startsWith(searchTerm);
 
+        }
+        );
+    } else if (nameFilter.checked) {
+        filteredPokemon = allPokemon.filter((pokemon) =>  {
+         return  pokemon.name.toLowerCase().startsWith(searchTerm);
+
+    });}
+else {
+        filteredPokemon = allPokemon;
+    }
+
+    displayPokemons(filteredPokemon);
+
+    if (filteredPokemon.length === 0) {
+        notFoundMessage.style.display = "block";
+        }  
+    else {
+        notFoundMessage.style.display = "none";
+    }
+    }
