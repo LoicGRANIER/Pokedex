@@ -4,22 +4,6 @@ body {
     background: linear-gradient(to bottom right, rgb(255, 58, 58), rgb(251, 201, 201));
 }
 
-.list-wrapper {
-    display: flex;
-    flex-wrap:wrap;
-
-    
-}
-
-.number-wrap {
-text-align: center;
-}
-
-.name-wrap {
-    display: grid;
-    text-align: center;
-}
-
 img {
 /* transform:scale(0.5);        */
 }
@@ -104,6 +88,7 @@ margin: 1rem;
 /* From Uiverse.io by vinodjangid07 */ 
 .InputContainer {
     width: 210px;
+    box-shadow: var(--drop-shadow-inner);
     height: 50px;
     display: flex;
     align-items: center;

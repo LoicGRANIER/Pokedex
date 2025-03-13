@@ -34,7 +34,7 @@ async function loadPokemon(id) {
             const flavorText = getEnglishFlavorText(pokemonSpecies) 
             function setElementStyles(elements, cssProperty, value) {
                 if (!Array.isArray(elements)) {
-                    elements = [elements]; // Convertir un élément unique en tableau
+                    elements = [elements]; 
                 }
                 elements.forEach((element) => {
                     if (element) {
@@ -43,9 +43,9 @@ async function loadPokemon(id) {
                 });
             }
             
-            document.querySelector(".body3-fonts .pokemon-description").textContent = flavorText;
+            document.querySelector(".body3-fonts.pokemon-description").textContent = flavorText;
            
-            const [leftArrow, rightArrow] = ["#leftArrow", "#rightArrow"].map((selection) => document.querySelector(selection));
+            const [leftArrow, rightArrow] = ["#left-arrow", "#right-arrow"].map((selection) => document.querySelector(selection));
             leftArrow.removeEventListener("click", navigatePokemon);
             rightArrow.removeEventListener("click", navigatePokemon);
 
@@ -60,7 +60,7 @@ async function loadPokemon(id) {
                 });
             }
 
-            console(rightArrow)
+           
             window.history.pushState({}, "", `./detail.html?id=${id}`);
         }
 
@@ -171,7 +171,7 @@ function displayPokemonsDetails(pokemon) {
 
     document.querySelector(".name-wrap .name").textContent = capitalizePokemonName;
 
-    document.querySelector(".pokemon-id-wrap .body2-fonts").textContent = `#${String(id).padStart(3, "0")};`
+    document.querySelector(".pokemon-id-wrap .body2-fonts").textContent = `#${String(id).padStart(3, "0")}`
 
     const imageElement = document.querySelector(".detail-img-wrapper img");
     imageElement.src = `https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
